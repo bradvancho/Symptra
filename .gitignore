@@ -17,6 +17,7 @@ DerivedData/
 # Firebase / secrets (never commit real values)
 GoogleService-Info.plist
 Secrets.xcconfig
+Config/Secrets.xcconfig
 *.xcconfig.local
 
 # IMH / local env (if used)

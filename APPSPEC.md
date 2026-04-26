@@ -138,7 +138,7 @@ Paths use the Firebase Auth **uid** as the user id.
 
 - IMH uses **HTTP Basic Auth** (API user + password) on **every** request.
 - **Never** embed credentials in app source, committed config, or this spec.
-- **Recommended for V1:** supply credentials via a **gitignored** Xcode build configuration (e.g. `Secrets.xcconfig`) with user-defined build settings (e.g. `IMH_API_USER`, `IMH_API_PASSWORD`), referenced only from the app target’s base configuration. Document in README that developers copy `Secrets.xcconfig.example` and fill locally.
+- **Recommended for V1 (implemented in repo):** `SymptraSecrets.xcconfig` includes **`Config/Secrets.xcconfig`** (gitignored). Copy **`Config/Secrets.xcconfig.example`** → **`Config/Secrets.xcconfig`** and set `IMH_API_USER` (API key UUID) and `IMH_API_PASSWORD`. Values are merged into the app **`Info.plist`** as `IMH_API_USER` / `IMH_API_PASSWORD` for Swift (`Bundle.main`).
 - **Alternative:** one-time entry stored in **Keychain** (more suited if credentials vary per environment or per deploy).
 - CI and teammates use their own secrets files or injected env vars; production builds use secure pipelines, not committed files.
 
