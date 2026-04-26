@@ -1,0 +1,75 @@
+
+# Cursor Dev Rules — Symptra
+
+## Output behavior
+- Be concise.
+- When a technical decision is non-obvious, state the rule(s) you used in 1–3 short tags (e.g., "Simple", "NoDup", "AskQuestions").
+- If requirements are unclear, ask focused follow-up questions.
+- If progress is still possible with uncertainty, propose 2–3 options and implement the safest scaffold with TODOs.
+
+## Change safety
+- Do not make code changes unless you are ≥95% confident about the requirement OR you are creating a clearly labeled scaffold (TODO + minimal wiring).
+- Only change what is requested or directly necessary for the requested change.
+- Before adding new types/functions, search the codebase to avoid duplication.
+
+## Build safety
+- All code must compile.
+- If compilation cannot be verified, minimize changes and clearly state assumptions.
+
+## Project constraints
+- iOS only.
+- Swift + SwiftUI (UIKit allowed only when necessary).
+- No extra modules/packages; keep a single app target.
+- Keep files clean and organized; refactor when files exceed ~250 lines.
+
+## Tech stack
+- Firebase: FirebaseAuth, FirebaseFirestore, FirebaseCore.
+- Never commit secrets.
+- Never overwrite `.env` or config files containing secrets without explicit instruction.
+
+## Code style & formatting
+- Match the existing code style and naming patterns.
+- Use Xcode’s built-in formatting.
+- Keep naming consistent across models, services, and views.
+
+## Logging & comments
+- Add logging at system boundaries: auth, networking, persistence, background tasks, navigation events, and all error paths.
+- Prefer `Logger` (os.log) over `print`.
+- Use privacy-safe logging (no tokens, emails, or PII).
+- Keep logs minimal in Release builds (guard with `#if DEBUG` or appropriate log levels).
+- Comments only for:
+  - Non-obvious intent
+  - Tricky logic
+  - Workarounds
+  - Why something exists (not what it does)
+
+## State management (SwiftUI)
+- Use Observation framework: `@Observable final class ...` for view models/app state.
+- Views should observe reference models via `let model: Model`.
+- Do NOT use `@State` to hold reference-type models.
+- Use `@State` only for local, view-owned value state.
+- Use `@Binding` only when the child must write to a parent-owned value.
+- Pass dependencies via initializers.
+- Use `@Environment` only for truly app-wide dependencies.
+
+## Data flow & errors
+- Handle errors explicitly and propagate them to the UI with user-friendly messages.
+- Prefer simple, testable services (e.g., `AuthService`, `FirestoreService`) instead of putting logic inside Views.
+
+## Performance
+- Use `LazyVStack`, `LazyHStack`, or `LazyVGrid` for large collections.
+- Use stable identifiers in `ForEach`.
+
+## Testing
+- Unit test ViewModels and business logic.
+- UI tests only for critical flows.
+- Preview-only sample data and debug fixtures are allowed if guarded by `#if DEBUG`.
+- Never include fake/mock data paths in Release builds.
+
+## Security
+- Do not log secrets or PII.
+- Store sensitive data securely (Keychain when needed).
+- Follow least-privilege principles for Firebase rules and client capabilities.
+- Treat symptom data, questionnaire answers, reports, emails, names, and identifiers as sensitive health-related data.
+- Do not log health information, questionnaire answers, report contents, tokens, emails, names, or user identifiers.
+- Prefer privacy-preserving local state and secure storage when handling sensitive data.
