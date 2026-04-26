@@ -6,5 +6,7 @@
 	<string>$(IMH_API_USER)</string>
 	<key>IMH_API_PASSWORD</key>
 	<string>$(IMH_API_PASSWORD)</string>
+	<key>IMH_NAMESPACE_ROOT</key>
+	<string>$(IMH_NAMESPACE_ROOT)</string>
 </dict>
 </plist>

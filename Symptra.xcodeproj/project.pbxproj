@@ -51,6 +51,14 @@
 			);
 			sourceTree = "<group>";
 		};
+		6634B6D72F9EB54F006B2804 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6634B6D62F9EB54F006B2804 /* Symptra.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		6634B6F32F9F2001006B2804 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +66,6 @@
 				6634B6F12F9F2001006B2804 /* Secrets.xcconfig.example */,
 			);
 			path = Config;
-			sourceTree = "<group>";
-		};
-		6634B6D72F9EB54F006B2804 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6634B6D62F9EB54F006B2804 /* Symptra.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

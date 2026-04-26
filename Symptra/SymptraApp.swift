@@ -10,13 +10,15 @@ import FirebaseCore
 
 @main
 struct SymptraApp: App {
+    @State private var appModel = AppViewModel()
+
     init() {
         FirebaseApp.configure()
     }
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView(appModel: appModel)
         }
     }
 }
